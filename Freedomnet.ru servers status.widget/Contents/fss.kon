@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<widget version="1.0"  minimumVersion="1.5">
+    <option>allowCustomObjectAttributes</option>
+    <debug>off</debug>
+    <!-- 
+    Freedomnet.Ru Servers Status Viewer
+    Design, Code: Kolia Morev <kolyuchiy@gmail.com> 
+    -->
+
+    <window title="Freedomnet.Ru Status Viewer">
+        <name>main_window</name>
+        <width>193</width>
+        <height>43</height>
+        <alignment>left</alignment>
+        <opacity>255</opacity>
+        <visible>true</visible>
+        <shadow>true</shadow>
+    </window>
+
+    <image src="Resources/all_01.png">
+        <name>top</name>
+        <hOffset>0</hOffset>
+        <vOffset>0</vOffset>
+    </image>
+
+    <action trigger="onLoad" file="fss.js"/>
+
+    <action trigger="onTimer" interval="120">
+        updateAll();
+    </action>
+
+    <action trigger="onWakeFromSleep">
+        // Putting in a pause because some desktops
+        // take a while to reconnect after waking up.
+        sleep(7000);
+        updateAll();
+    </action>
+
+</widget>
